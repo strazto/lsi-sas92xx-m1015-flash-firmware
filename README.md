@@ -53,7 +53,7 @@ I've set up this project to make it so the steps to get the environments you nee
 
 ### Steps
 
-#### A: Wipe the existing firmware (`DOS` Shell)
+#### A: Wipe the existing firmware (Using `DOS`)
 
 Set up the USB:
 
@@ -76,20 +76,12 @@ Wipe the card:
 
 Shut down the system.
 
-#### B: Flash the new firmware (`EFI` Shell)
+#### B: Flash the new firmware (Using `UEFI`)
 
-Set up the USB
-
-1. Use rufus to make a "Non-Bootable" USB
-   - This is misleading, since the USB will be bootable, but that's because the files you copy from this project is what makes it bootable.
-   - Use `GPT` for the partition scheme
-2. Copy everything from the root of this project to the USB.
-   - The part that makes the USB bootable is the special filepath `/efi/boot/bootx64.efi`.
-   - This is the binary for the `EFI` shell we're booting to.
-
-Flash the card:
-
-1. Plug in the USB and boot from it
+1. Reboot the machine in UEFI mode. You may need to switch your boot mode into
+   'UEFI' or if the option of 'Boot from UEFI device' (or file) is available
+   in your boot menu, select that. If you need to specify a file, use the
+   supplied `efi/boot/bootx64.efi` shell.
 2. Navigate to the USB filesystem
    - The shell should give you a list of filesytems on the device on boot, but you can also use `map` to list them.
      - You can use PageUp / PageDown keys to scroll
